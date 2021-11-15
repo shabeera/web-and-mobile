@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+
+        let data = {
+            name: 'Amir',
+            country: 'Pak',
+            postalCode: 190,
+            address: {
+                street: 31,
+                area: 'Samanabad'
+            }
+        };
+
+        data.address.area + " " + data.address.street;
+        console.log(data.name);
+
+        // let data = prompt('Enter a number of series');
+        // data = data.split(',');
+
+        // data.sort();
+
+        // data.forEach(element => {
+
+        //     let ch = element.charAt(0);
+
+        //     if (!window["array_" + ch]) {
+        //         window["array_" + ch] = [];
+        //     } else {
+        //         window["array_" + ch].push(+element);
+        //     }
+
+        // });
+
+
+
+
+    </script>
+
+</head>
+
+<body>
+
+    <div>
+
+        <button id="mButton">Click on me</button>
+
+        <table id="mnb" border="1">
+            <thead>
+                <tr>
+                    <th colspan="3">Fruits</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Apple</td>
+                    <td>Banana</td>
+                    <td>Cherry</td>
+                </tr>
+                <tr>
+                    <td>Apricot</td>
+                    <td>Banana</td>
+                    <td>Cherry</td>
+                </tr>
+            </tbody>
+
+            <tfoot>
+
+            </tfoot>
+        </table>
+    </div>
+
+    <form action="/search" method="GET">
+
+        <div>
+            <select>
+                <option value="">Select Country</option>
+                <option value="PAK">PAK</option>
+                <option value="IND">IND</option>
+                <option value="IRAN">IRAN</option>
+                <option value="SA">SA</option>
+                <option value="CHINA">CHINA</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="datePicker">USer name</label> <input id="username" title="Please select a unique username for your account name"
+                placeholder="User Name" name="username" type="text">
+        </div>
+
+        <div>
+            <input name="userpassword" type="password">
+        </div>
+        <div>
+            <input type="file" webkitdirectory=true>
+        </div>
+
+        <div>
+            <input id="datePicker" type="date">
+        </div>
+
+        <div>
+            <textarea name="comments" cols="30" rows="10"></textarea>
+        </div>
+
+
+
+        <div>
+
+            <input value="Male" required type="radio" name="gender">Male
+            <input value="FeMale" required type="radio" name="gender">FeMale
+
+        </div>
+
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+
+    </form>
+    <img id="myImage" src="data.jpg" />
+
+    <script>
+
+        var city = 'FSD';
+        let area = window.innerWidth / 2;
+
+        function myImageLoaded() {
+            console.log('this iamge  ahs been laoded')
+        }
+
+        document.body.onmousemove =    function (abc) {
+
+            if(abc.pageX < area){
+                document.body.style.backgroundColor = 'green';
+            }else{
+                document.body.style.backgroundColor = 'orange';
+            }
+
+
+            // console.log(abc);
+            // // if(abc.altKey && abc.ctrlKey  ){
+            // //     console.log('START END TASK');
+            // // }
+
+            // console.log('on Mousemoving');
+        };
+
+    </script>
+
+</body>
+
+</html>

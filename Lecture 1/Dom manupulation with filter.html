@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://airforshare.com/files/fdQAWu.html -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dom manupulation with filter</title>
+</head>
+
+<body>
+    <div id="select">
+
+
+        <label> Enter The City</label>
+        <input type="text" name="" oninput="filterUsers()" id="nameSelector">
+
+        <!-- <select onchange="filterUsers()" name="" id="citySelector">
+                    <option value="All">All</option>
+                    <option value="FSD">FSD</option>
+                    <option value="Quetta">Quetta</option>
+                    <option value="LHR">LHR</option>
+                    <option value="FSD">FSD</option>
+                </select> -->
+
+
+    </div>
+
+    <div id="test">
+        <table border="2" id="userTAble">
+            <tbody>
+                <tr>
+                    <td>Ali</td>
+                    <td>FSD </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>Qasim</td>
+                    <td>LHR </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>Ahmed</td>
+                    <td>Quetta </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>Rafeeq</td>
+                    <td>Quetta </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>Rameez</td>
+                    <td>FSD </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>SUltan</td>
+                    <td>FSD </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>Bilal</td>
+                    <td>ISD </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>Anas</td>
+                    <td>ISD </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>Rameez</td>
+                    <td>FSD </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>Hamza</td>
+                    <td>LHR </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    
+
+    <script>
+        let users = [
+            {
+                name: 'Ali',
+                city: 'FSD'
+            },
+            {
+                name: 'Qasim',
+                city: 'LHR'
+            },
+            {
+                name: 'Ahmed',
+                city: 'Quetta'
+            },
+            {
+                name: 'Rafeeq',
+                city: 'Quetta'
+            },
+            {
+                name: 'Rameez',
+                city: 'FSD'
+            },
+            {
+                name: 'SUltan',
+                city: 'FSD'
+            },
+            {
+                name: 'Bilal',
+                city: 'ISD'
+            },
+            {
+                name: 'Anas',
+                city: 'ISD'
+            },
+            {
+                name: 'Rameez',
+                city: 'FSD'
+            },
+            {
+                name: 'Hamza',
+                city: 'LHR'
+            }
+        ];
+
+        renderUser(users);
+
+
+        function renderUser(users) {
+
+
+            userTAble.innerHTML = '';
+
+            users.forEach((users, ind) => {
+                userTAble.innerHTML += '<tr>\
+                <td>'+ users.name + '</td>\
+                <td ><input oninput="updateCity('+ ind + ')" value=' + users.city + ' /></td>\
+                </tr>'
+
+            });
+        }
+
+
+        function updateCity(inx) {
+
+            console.log(inx + " " + event.target.value);
+            users[inx].city = evt.target.value;
+
+        }
+
+
+        function filterUsers() {
+            let seletedName = nameSelector.value;
+            // let selectedCity = citySelector.value;
+            let filtedUsers = users.filter((users) => {
+
+                // if(users.city == selectedCity){
+                //     return true;
+                // }else if (selectedCity == 'All'){
+                //     return true;
+                // }else
+                //  if (users.name == seletedName){
+                //     return true;
+                // }
+                if (users.name.includes(seletedName)) {
+                    return true;
+                } else if (seletedName == '') {
+                    return true;
+                }
+
+            });
+            renderUser(filtedUsers);
+
+        }
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

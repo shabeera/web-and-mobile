@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <style>
+    .t-center {
+      text-align: center;
+    }
+  </style>
+
+
+</head>
+
+<body>
+
+  <form id="orderForm" onsubmit="takeOrder()">
+    <table border="1">
+
+      <thead>
+        <tr>
+          <th>Dish Name</th>
+          <th>Order</th>
+          <th>Qty</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+
+
+      <tbody>
+
+        <tr>
+          <td>Chicken Biryani</td>
+          <td>
+            <input data-name="Chicken Biryani" data-price="100" class="dish-selector" type="checkbox" class="" />
+          </td>
+          <td>
+            <input type="number" value="0" class="qty" />
+          </td>
+          <td>100</td>
+        </tr>
+
+        <tr>
+          <td>Haleem</td>
+          <td>
+            <input data-name="Haleem" data-price="155" class="dish-selector" type="checkbox" class="" />
+          </td>
+          <td>
+            <input type="number" value="0" class="qty" />
+          </td>
+          <td>155</td>
+        </tr>
+
+        <tr>
+          <td>Qorma</td>
+          <td>
+            <input data-name="Qorma" data-price="180" class="dish-selector" type="checkbox" class="" />
+          </td>
+          <td>
+            <input type="number" value="0" class="qty" />
+          </td>
+          <td>180</td>
+        </tr>
+
+        <tr>
+          <td>Jalfrazy</td>
+          <td>
+            <input data-name="Jalfrazy" data-price="140" class="dish-selector" type="checkbox" class="" />
+          </td>
+          <td>
+            <input type="number" value="0" class="qty" />
+          </td>
+          <td>140</td>
+        </tr>
+
+        <tr>
+          <td>Beef Tikka</td>
+          <td>
+            <input data-name="Beef Tikka" data-price="220" class="dish-selector" type="checkbox" class="" />
+          </td>
+          <td>
+            <input type="number" value="0" class="qty" />
+          </td>
+          <td>220</td>
+        </tr>
+
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td class="t-center" colspan="3">
+            <button>Submit Order</button>
+          </td>
+        </tr>
+      </tfoot>
+
+    </table>
+  </form>
+
+
+
+  <script>
+
+
+    class Cart {
+
+      addToCart(item) {
+        this.items.push(item);
+      }
+      calculateBill() {
+
+      }
+    }
+
+    class FoodDish {
+
+      constructor(name, price, qty) {
+        this.name = name;
+        this.price = price;
+        this.qty = qty;
+      }
+
+
+    }
+
+
+    class CustomOrder {
+
+      constructor() {
+        this.orders = [];
+      }
+
+
+    }
+
+
+    let orderedDishes = JSON.parse(localStorage.getItem('rDishes')) || [];
+
+    orderedDishes.forEach(function (dish, index) {
+ 
+      let dishName = dish.name;
+
+      let allTD = document.querySelectorAll('td');
+
+
+      //var selectedDish = allTD.filter(function (td) {
+
+      for (var i = 0; i < allTD.length; i++) {
+
+        if (allTD[i].innerHTML == dishName) {
+
+
+          let qtyBox = allTD[i].nextElementSibling.nextElementSibling.querySelector('input');
+          qtyBox.value = dish.qty;
+
+          var dishSelectedTag = allTD[i].nextElementSibling.querySelector('input');
+          dishSelectedTag.checked = true;
+
+          //its a td tag
+          console.log(allTD[i].nextElementSibling)
+
+
+          // console.log(allTD[i]);
+          // break;
+        }
+
+      }
+
+      // td.innerHTML == dishName;
+      //});
+
+      // console.log(selectedDish);
+
+
+    });
+
+    let totalBill = 0;
+    let discountedBill = 0;
+
+    function tak0eOrder() {
+
+      event.preventDefault();
+      //console.log(event);
+
+      orderedDishes.length = 0;
+
+      let dishSelectors = document.querySelectorAll('.dish-selector');
+
+      dishSelectors.forEach(function (tag) {
+
+        if (tag.checked) {
+
+
+          let name = tag.getAttribute('data-name')
+          let price = tag.getAttribute('data-price')
+
+          let qtyBox = tag.parentNode.nextElementSibling.querySelector('input');
+
+          totalBill += +price;
+
+          let orderedDish = new FoodDish(name, price, qtyBox.value);
+          orderedDishes.push(orderedDish);
+
+
+
+        }
+
+      });
+
+      discountedBill = totalBill;
+
+      if (totalBill > 300) {
+
+        discountedBill = totalBill - (totalBill * 5 / 100);
+
+      }
+
+      localStorage.setItem('rDishes', JSON.stringify(orderedDishes));
+
+      console.log('Total bill ' + totalBill);
+      console.log('Discounted amount ' + discountedBill);
+
+    }
+
+  </script>
+
+</body>
+
+</html>

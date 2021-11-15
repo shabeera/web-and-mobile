@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+</head>
+
+<body>
+
+    <form onSubmit="addPerson()">
+
+        <div>
+            <label for="uName">Name</label>
+            <input name="uName" id="uName" type="text" />
+        </div>
+        <div>
+            <label for="uNic">NIC</label>
+            <input name="uNic" id="uNic" type="text" />
+        </div>
+        <div>
+            <label for="uHobby">Hobby</label>
+            <input name="uHobby" id="uHobby" type="text" />
+        </div>
+        <div>
+            <select name="pType" id="pType">
+                <option value="Teacher">Teacher</option>
+                <option value="Student">Student</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+
+        <div>
+            <button type="button" onclick="showItems('Student')">Print Students</button>
+            <button type="button" onclick="showItems('Teacher')">Print Teachers</button>
+
+        </div>
+
+        <div id="displayBox">
+
+        </div>
+
+    </form>
+
+    <style>
+        .person {
+            border: 1px solid magenta;
+            margin: 2px;
+        }
+    </style>
+
+
+<script>
+
+
+    // localStorage.setItem('sList', 'adkajdlasjdkasjd')
+    // var str =localStorage.getItem('sList');
+
+        //Try to load students from the localStorage
+        let persons = JSON.parse(localStorage.getItem('sList')) || [];
+
+        function showItems(type) {
+
+            displayBox.innerHTML = '';
+
+            var filteredItems = persons.filter((person) => {
+                return person._type == type;
+            });
+
+            filteredItems.forEach((student) => {
+                displayBox.innerHTML += '<div class="person"><div><b>Name</b> ' + student.name + '</div>\
+                                         <div><b>NIC </b>'+ student.nic + '</div>\
+                                         <div><b>Hobby </b>'+ student.hobby + '</div></div>';
+            });
+
+            //  displayBox.innerHTML = students.join('<br />');
+
+        }
+
+        function addPerson() {
+
+            event.preventDefault();
+
+            if (pType.value == 'Student') {
+                let student = new Student();
+                student.type = student.constructor.name;
+                student.name = document.getElementById('uName').value;
+                student.nic = document.getElementById('uNic').value;
+                student.hobby = document.getElementById('uHobby').value;
+                persons.push(student);
+
+            } else {
+                let teacher = new Teacher();
+                teacher.type = teacher.constructor.name;
+                teacher.name = document.getElementById('uName').value;
+                teacher.nic = document.getElementById('uNic').value;
+                teacher.hobby = document.getElementById('uHobby').value;
+                persons.push(teacher);
+            }
+
+            //to remove an item
+            //localStorage.removeItem('sList');
+
+            localStorage.setItem('sList', JSON.stringify(persons)); 
+            console.log('Person added');
+        }
+
+     
+
+        class Person {
+            constructor() {
+                this.name = 'Khurram';
+                this.NIC = '15';
+                this.hobby = 'Sports';
+                this._type = null;
+            }
+            get type() {
+
+                return this._type;
+
+            }
+            set type(newValue) {
+                this._type = newValue;
+                //20
+            }
+        }
+
+        person.type = 90;    
+
+        class Teacher extends Person {
+
+
+        }
+
+        class Student extends Person {
+
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #needle {
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 100px solid red;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            left: 0;
+            right: 0;
+            transform-origin: bottom;
+        }
+
+        #speedBox {
+
+            position: relative;
+            width: fit-content;
+
+        }
+
+        #speedBox #box {
+            width: 400px;
+        }
+
+        #needle-point {
+            position: absolute;
+            top: 57%;
+            height: fit-content;
+            margin: auto;
+            left: 0;
+            right: 0;
+            width: 45px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="speedBox">
+        <div id="needle"></div>
+        <img id="box" src="needle.png" alt="">
+        <img id="needle-point" src="needle-point.png" alt="">
+    </div>
+
+    <script>
+
+        let rotation = 0;
+
+        document.onkeydown= (evt) => {
+
+            switch (evt.keyCode) {
+
+                case 37:
+                    if (rotation > -90) {
+                        rotation--;
+                        needle.style.transform = "rotate(" + rotation + "deg)";
+                    }
+                    break;
+
+                case 39:
+                    if (rotation < 90) {
+                        rotation++;
+                        needle.style.transform = "rotate(" + rotation + "deg)";
+                    }
+                    break;
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

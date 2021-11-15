@@ -1,0 +1,52 @@
+<style>
+
+.parent{
+   display:grid;
+   grid-template-rows:200x 200px 1fr; 
+   grid-template-columns:3;
+   border:1px solid red;
+   grid-template:
+      "area1 area2 area3"
+      "area4 area5 area5"
+      "area6 area5 area5"
+}
+
+.item{
+    border:2px solid green;
+}
+
+
+.item:nth-child(1){
+   grid-area:area1
+}
+
+.item:nth-child(2){
+   grid-area:area2
+}
+
+.item:nth-child(3){
+   grid-area:area3
+}
+
+.item:nth-child(4){
+   grid-area:area4
+}
+
+.item:nth-child(5){
+   grid-area:area5
+}
+
+.item:nth-child(1){
+   grid-area:area6
+}
+
+</style>
+
+<div class="parent">
+    <div class="item a">A</div>
+    <div class="item b">B</div>
+    <div class="item c">C</div>
+    <div class="item d">D</div>
+    <div class="item e">E</div>
+    <div class="item f">F</div>
+</div>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button id="myButton">Click Me</button>
+
+    <script>
+
+        myButton.onclick = sayHi;
+
+        function sayHi() {
+
+            console.log('Hello ji!');
+
+            
+
+        }
+
+
+
+
+
+        getFactorial(3);
+
+        function getFactorial(num) {
+
+            if (num == 1) {
+                return num;
+            } else {
+                // let data = getFactorial(num - 1);
+                return getFactorial(num - 1) * num;
+            }
+
+        }
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

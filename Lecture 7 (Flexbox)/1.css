@@ -1,0 +1,13 @@
+nav{
+    background-color: #6c71fb;
+}
+
+.card {
+
+    /* width:250px; */
+}
+
+.card .card-image .card-title {
+right: 0;
+left: auto;
+}

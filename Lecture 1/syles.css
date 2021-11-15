@@ -1,0 +1,19 @@
+span#outerTag.myData[id] {
+    color: brown;
+}
+
+span#outerTag.myData {
+    color: green;
+}
+
+span.myData {
+    color: magenta;
+}
+
+.myData {
+    color: orange  !important;
+}
+
+span {
+    color: blue  !important;
+}

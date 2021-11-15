@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        @keyframes wheelAnimation {
+
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+
+
+        }
+
+        @keyframes carAnimation {
+
+            from {
+                left: 0;
+            }
+
+            to {
+                left: 80%;
+            }
+
+        }
+
+        #wheel1 {
+
+            /* animation: wheelAnimation 1s linear 0s;
+            animation-iteration-count: 3; */
+            width: 40px;
+            position: absolute;
+            top: 70px;
+            left: 49px;
+        }
+
+        #wheel2 {
+
+
+
+            position: absolute;
+            top: 71px;
+            width: 40px;
+            right: 41px;
+
+        }
+
+        #car img:first-child {
+            width: 100%;
+        }
+
+        #car {
+
+
+            /* animation-name: carAnimation;
+            animation-duration: 4s;
+            animation-delay: 0s;
+            animation-timing-function:linear; */
+
+            position: absolute;
+            width: 300px;
+            top: 12%;
+        }
+
+
+        .moving #wheel2,
+        .moving #wheel1 {
+            animation: wheelAnimation 1s linear 0s;
+            animation-iteration-count: 3;
+        }
+
+        .moving {
+            animation: carAnimation 4s ease-out 0s;
+
+        }
+
+        #road {
+            width: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+
+    <div id="car">
+
+        <img src="my-car.png" alt="">
+
+        <img id="wheel1" src="wheel.png" alt="">
+
+        <img id="wheel2" src="wheel.png" alt="">
+
+    </div>
+
+    <img id="road" src="myroad.jpg" alt="">
+
+    <button id="someBTN" onclick="car.classList.add('moving')">Click Me</button>
+
+</body>
+
+</html>

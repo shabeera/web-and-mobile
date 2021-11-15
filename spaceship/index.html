@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #gameContainer {
+            width: 700px;
+            height: 600px;
+            background-image: url(wall.jpg);
+        }
+
+        #startBTN {
+
+            width: 100px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+
+        }
+
+        #splashScreen {
+            position: relative;
+            height: 100%;
+            ;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        #mySHipa {
+            width: 150px;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body id="myBOdy">
+
+    <div id="gameContainer">
+
+        <div id="splashScreen">
+            <img onclick="startGame()" id="startBTN" src="start-game.png" alt="">
+        </div>
+
+        <div id="playerScreen" class="hide">
+            <img id="mySHipa" src="ship.png" alt="">
+        </div>
+
+        <div id="gameOverScreen" class="hide">
+
+        </div>
+
+
+    </div>
+
+    <script>
+
+        function setKeys() {
+
+            // myBOdy.onmousemove = (evt) => {
+
+            //     mySHipa.style.left = evt.clientX + 'px';
+            //     mySHipa.style.top = evt.clientY + 'px';
+
+            // }
+
+            myBOdy.onkeydown = (evt) => {
+
+                switch (evt.keyCode) {
+
+                    case 37:
+                        mySHipa.style.left = (mySHipa.offsetLeft - 5) + 'px';
+
+                        console.log("left chali");
+                        break;
+
+                    case 38:
+                        clearInterval(downKey);
+                        console.log("top chali");
+
+                        if (mySHipa.offsetTop > 5) {
+
+                            mySHipa.style.top = (mySHipa.offsetTop - 5) + 'px';
+                        }
+
+                        break;
+
+                    case 39:
+                        console.log("right chali");
+
+                        if (mySHipa.offsetLeft + mySHipa.offsetWidth < gameContainer.offsetWidth) {
+
+                            mySHipa.style.left = (mySHipa.offsetLeft + 5) + 'px';
+                        }
+
+                        break;
+
+                    case 40:
+                        console.log("down chali");
+                        mySHipa.style.top = (mySHipa.offsetTop + 5) + 'px';
+
+                        break;
+
+                }
+
+            }
+
+        }
+
+        let downKey;
+
+        function startGame() {
+
+            setKeys();
+
+            splashScreen.classList.add('hide');
+
+            playerScreen.classList.remove('hide');
+
+            downKey = setInterval(() => {
+
+                mySHipa.style.top = (mySHipa.offsetTop + 1) + 'px';
+
+                if ((mySHipa.offsetTop + mySHipa.offsetHeight) >= gameContainer.offsetHeight) {
+
+                    clearInterval(downKey);
+
+                }
+
+
+            }, 10);
+
+
+        }
+
+    </script>
+
+</body>
+
+</html>

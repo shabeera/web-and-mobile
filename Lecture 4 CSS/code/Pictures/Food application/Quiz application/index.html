@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+
+        window.onload = function () {
+
+            application.init();
+
+        }
+
+        class Question {
+            constructor(question, answers, correct, prizeMoney) {
+                this.question = question;
+                this.prizeMoney = prizeMoney;
+                this.answers = answers;
+                this.correct = correct;
+
+            }
+        }
+
+
+        function some() {
+
+            alert(200);
+
+        }
+
+
+        let application = {
+            totalRewards: 0,
+            currentQuestion: 0,
+            data: [
+                new Question('What is the captial of Pakistan?', ['Karachi', 'Lahore', 'Islamabad', 'Faisalabad'], 'Islamabad', 12000),
+                new Question('What is the old name of Faislabad?', ['Lyalpur', 'CAbad', 'MAbad', 'NAbad'], 'Lyalpur', 15000),
+                new Question('What is the capital of Punjab?', ['Lahore', 'Faislabad', 'Multan', 'Okara'], 'Lahore', 20000),
+                new Question('What is the capital of Sindh?', ['Karachi', 'Sukkur', 'Hyderabad', 'Nawab Shah'], 'Karachi', 25000)
+            ],
+            onAnswerSelected(evt) {
+
+                let answer = evt.target.innerText;
+
+                let question = application.data[application.currentQuestion];
+
+
+                if (question.correct == answer) {
+
+                    // application.totalRewards += question.prize;
+                    alert('25 Lakh confirm!');
+
+                    application.totalRewards += question.prizeMoney;
+
+ 
+                    application.currentQuestion++;
+
+                    if (application.currentQuestion >= application.data.length) {
+
+                        alert('Total money earned ' + application.totalRewards + ' Account number please!');
+
+                    } else {
+
+                        application.setQuestion(application.data[application.currentQuestion]);
+                    }
+
+                } else {
+                    alert('Allah hafiz! Please take your earned money('+application.totalRewards+')');
+                }
+
+
+
+            },
+            init() {
+
+                let currentQuestion = this.data[this.currentQuestion];
+                this.setQuestion(currentQuestion);
+
+
+
+            },
+            setQuestion: function (question) {
+
+                questionContainer.innerText = question.question;
+                answersContainer.innerHTML = '';
+
+                question.answers.forEach((answer) => {
+
+                    let span = document.createElement('span');
+                    span.className = 'answer-box';
+                    span.onclick = application.onAnswerSelected;
+                    span.innerText = answer;
+                    answersContainer.appendChild(span);
+                    // answersContainer.innerHTML += span.outerHTML;
+
+                });
+
+
+            },
+            showNextQuestion() {
+
+            },
+            showPreviousFunction() {
+
+
+            },
+            showResult() {
+
+
+            }
+        };
+
+
+    </script>
+
+    <style>
+        #appContainer {
+
+            width: 1000px;
+        }
+
+
+        #appContainer img {
+            width: 100%;
+        }
+
+        #questionContainer {
+            position: absolute;
+            color: white;
+            font-size: 2em;
+            top: 43%;
+            z-index: 100;
+            left: 9%;
+        }
+
+        .answer-box:hover {
+            opacity: 0.7;
+        }
+
+        .answer-box {
+            cursor: pointer;
+        }
+
+        .answer-box:first-child {
+            position: absolute;
+            color: white;
+            font-size: 2em;
+            top: 55%;
+            left: 11%;
+        }
+
+
+        .answer-box:nth-child(2) {
+            position: absolute;
+            color: white;
+            font-size: 2em;
+            top: 55%;
+            left: 39%;
+        }
+
+
+        .answer-box:nth-child(3) {
+            position: absolute;
+            color: white;
+            font-size: 2em;
+            top: 63%;
+            left: 11%;
+        }
+
+        .answer-box:nth-child(4) {
+            position: absolute;
+            color: white;
+            font-size: 2em;
+            top: 63%;
+            left: 39%;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="appContainer">
+
+        <img src="KBC.png" />
+
+        <div id="questionContainer">
+
+        </div>
+
+        <div id="answersContainer" class="newSome">
+
+
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

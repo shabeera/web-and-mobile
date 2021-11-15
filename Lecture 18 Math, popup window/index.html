@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+    
+        #customMenu{
+            width:100px;
+            background-color: orange;
+            height: 400px;
+            position: absolute;
+            top:0;
+            left:0;
+            display: none;
+
+        }
+
+    </style>
+
+</head>
+<body>
+
+<table>
+
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+</table>
+
+<div id="customMenu">
+    <h1>Some contetn n</h1>
+</div>
+
+<img ondblclick="onDouble()" onload="some()" src="data.jpg" />
+
+<script>    
+
+    document.body.onmousemove = function(evt){
+        console.log(evt);
+        console.log(evt.clientX+","+evt.clientY);
+    }
+
+
+
+    window.oncontextmenu = function(){
+
+
+        customMenu.style.display = "block";
+
+        return false;
+
+    }
+
+    function onDouble(){
+
+        console.log("I am doubling");
+
+    }
+
+    window.onload = function(){
+
+        console.log("I have loaded");
+
+    }
+
+    function some(){
+        console.log(20);
+    }
+
+
+</script>
+
+
+</body>
+</html>

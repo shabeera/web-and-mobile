@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        #sliderContainer {
+
+            width: 600px;
+            height: 400px;
+            border: 1px solid red;
+            position: relative;
+
+        }
+
+        #sliderContainer footer {
+
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background: grey;
+            padding-top: 16px;
+            padding-bottom: 16px;
+
+
+        }
+
+        #imgBox {
+            width: 100%;
+            height: 100%;
+            ;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <div id="sliderContainer">
+
+
+        <div id="questionContainer">
+
+        </div>
+
+        <footer>
+            <button onclick="quizApp.prevQuestion()">PREV</button>
+            <button onclick="quizApp.nextQuestion()">NEXT</button>
+        </footer>
+
+    </div>
+
+
+    <script>
+
+
+
+
+
+        let quizApp = {
+            currentQuestion: 0,
+            showResult() {
+
+                let result = 0;
+
+                quizApp.questions.forEach((question) => {
+
+                    if (question.userAnswer == question.correct) {
+                        result += 1;
+                    }
+
+                })
+
+                console.log(((result / quizApp.questions.length) * 100) + "% answers are correct");
+                let sound = document.createElement('audio');
+                sound.src = "file.mp3";
+                sound.play();
+
+            },
+            nextQuestion() {
+
+
+                if (quizApp.currentQuestion < quizApp.questions.length - 1) {
+
+                    let cQuestion = quizApp.questions[quizApp.currentQuestion];
+
+                    if (cQuestion.userAnswer == null) {
+
+                        alert("please select your answer")
+
+                    } else {
+
+                        quizApp.currentQuestion++;
+                        // console.log(quizApp.currentQuestio)
+                        quizApp.init();
+
+                    }
+                } else {
+                    quizApp.showResult();
+                }
+
+            },
+            prevQuestion() {
+
+
+                if (quizApp.currentQuestion > 0) {
+                    quizApp.currentQuestion--;
+                    // console.log(quizApp.currentQuestio)
+                    quizApp.init();
+                }
+
+            },
+            init() {
+
+                let cQuestion = quizApp.questions[quizApp.currentQuestion];
+
+                questionContainer.innerHTML = " <div class='question'>" + (quizApp.currentQuestion + 1) + ")." + cQuestion.question + "</div>";
+
+                cQuestion.answers.forEach((answer) => {
+
+
+                    questionContainer.innerHTML += "<input name='quiz-answ'  onchange='quizApp.updateAnswer()' type=radio />" + answer;
+
+                });
+
+            },
+            updateAnswer() {
+
+                quizApp.questions[quizApp.currentQuestion].userAnswer = event.target.nextSibling.textContent;
+
+            },
+            questions: [
+                {
+                    question: "Who is the PM of Pakistan?",
+                    answers: ["Nawaz", "Imran", "Zardari", "Altaf"],
+                    correct: "Imran",
+                    userAnswer: null,
+                },
+                {
+                    question: "Who is the president of Pakistan?",
+                    answers: ["Mamnoon", "Arif Alvi", "Fazal-ul-rehman", "Musharaf"],
+                    correct: "Arif Alvi",
+                    userAnswer: null,
+                },
+                {
+                    question: "Who is the CM of Punjab?",
+                    answers: ["Shahbaz", "Pervez", "Usman bazdar", "Rana Sana-ullah"],
+                    correct: "Usman bazdar",
+                    userAnswer: null,
+                },
+                {
+                    question: "Who is the governor of Punjab?",
+                    answers: ["Shahbaz", "Pervez", "Usman bazdar", "sarwar"],
+                    correct: "sarwar",
+                    userAnswer: null,
+                }
+            ]
+        }
+
+        window.onload = quizApp.init;
+
+
+    </script>
+
+
+</body>
+
+</html>

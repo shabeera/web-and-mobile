@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+div.navBar {
+  position: relative;
+}
+
+.NavBar{
+  /* display: none; */
+}
+
+/* conditional CSS */
+
+@media screen and (min-width:800px) {
+    
+  .NavBar, #nav{
+    background-color: red;
+    /* display: block;; */
+  }
+
+
+
+
+}
+
+
+#nav {
+  background-color: #dddddd;
+  position: absolute;
+  top: 0;
+  /* margin-left:-24%; negative margin equal to half the width */
+  width: 100%;
+  list-style: none;
+}
+#nav li {
+  float: left;
+  margin-top: 1%;
+  position: relative;
+  left: 46vh;
+  padding: 3px;
+}
+#nav a {
+  display: block;
+  text-align: center;
+  padding-bottom: 5px;
+  width: 150px; /* fixed width */
+  text-decoration: none;
+  color: black;
+  font-weight: bolder;
+}
+div.NavBar #nav a:hover {
+  background-color: #fdc902;
+  border-radius: 30px;
+  
+}
+.logoImg {
+  text-align: center;
+  position: relative;
+  top: 7vh;
+}
+.logoImg img {
+  width: 17%;
+}
+div.topImg img {
+  position: absolute;
+  bottom: 7%;
+  width: 100%;
+}
+
+.box {
+  margin: auto;
+  position: relative;
+  width: 92%;
+  top: 77vh;
+  left: 8vh;
+}
+.box3 {
+  width: fit-content;
+  height: fit-content;
+  display: inline-block;
+  background-color: #e5e5e7;
+}
+.last {
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  top: 4vh;
+  font-size: xx-large;
+}
+.para {
+  text-align: center;
+  position: relative;
+  top: 4vh;
+  left: 0vh;
+  padding: 13px 28px 3px 14px;
+  width: 400px;
+  margin: 25px auto;
+}
+.icon5 {
+  position: absolute;
+  top: 4vh;
+  left: 10vh;
+  right: 46vh;
+  /* padding: 1px; */
+  color: #bbbbbb;
+  z-index: 3;
+  font-size: 83px;
+}
+.icon6 {
+  position: absolute;
+  top: 4vh;
+  left: 37%;
+  right: 46vh;
+  /* padding: 1px; */
+  color: #bbbbbb;
+  z-index: 2;
+  font-size: 83px;
+}
+.icon7 {
+  position: absolute;
+  top: 4vh;
+  left: 67%;
+  z-index: 1;
+  /* right: 41vh; */
+  /* padding: 1px; */
+  color: #bbbbbb;
+  font-size: 83px;
+}
+.share {
+  position: relative;
+  left: 89%;
+  bottom: 2vh;
+}
+#yellowBox {
+  background-color: #fdc903;
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  top: 133%;
+}

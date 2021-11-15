@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: rgb(33, 65, 207);
+        }
+        h1{
+            color: aliceblue;
+            margin-top: 50px;
+            font-size: 42px;
+            text-align: center;
+            font-family: monospace;
+        }
+        .main{
+            margin:10px auto;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            width: 300px;
+            height: auto;
+            border-radius: 5px;
+        }
+        .btn{
+            font-family: monospace;
+            font-size: 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 2px;
+            width: 60px;
+            height: 50px;
+            color:floralwhite;
+            background: #dadfde7e;
+        }
+        .display{
+            width: 268px;
+            font-family: monospace;
+            font-size: 32px;
+            border-radius: 5px;
+            margin: 5px;
+            padding: 5px;
+            text-align: right;
+        }
+        #zero{
+            width: 136px;
+        }
+        #equal{
+            height: 106px;;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Calculator</h1>
+    <div class="main">
+        <form name="Form">
+            <input type="text" name="textview" class="display" disabled />
+        </form>
+        <table>
+            <tr>
+                <td><input class="btn" type="button" value="C" onclick="clean()"></td>
+                <td><input class="btn" type="button" value="<" onclick="back()"></td>
+                <!-- <td><input class="btn" type="button" value="%" onclick="val('%')"></td> -->
+                <td><input class="btn" type="button" value="/" onclick="val('/')"></td>
+                <td><input class="btn" type="button" value="x" onclick="val('*')"></td>
+            </tr>
+            <tr>
+                <td><input class="btn" type="button" value="7" onclick="val(7)"></td>
+                <td><input class="btn" type="button" value="8" onclick="val(8)"></td>
+                <td><input class="btn" type="button" value="9" onclick="val(9)"></td>
+                <td><input class="btn" type="button" value="-" onclick="val('-')"></td>
+            </tr>
+            <tr>
+                <td><input class="btn" type="button" value="4" onclick="val(4)"></td>
+                <td><input class="btn" type="button" value="5" onclick="val(5)"></td>
+                <td><input class="btn" type="button" value="6" onclick="val(6)"></td>
+                <td><input class="btn" type="button" value="+" onclick="val('+')"></td>
+            </tr>
+            <tr>
+                <td><input class="btn" type="button" value="1" onclick="val(1)"></td>
+                <td><input class="btn" type="button" value="2" onclick="val(2)"></td>
+                <td><input class="btn" type="button" value="3" onclick="val(3)"></td>
+                <td rowspan="2"><input class="btn" id="equal" type="button" value="=" onclick="nResult()"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input class="btn" id="zero" type="button" value="0" onclick="val(0)"></td>
+                <td><input class="btn" type="button" value="." onclick="val('.')"></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+
+
+        
+
+        // let calucationDone = false;
+        // let allowedOperators = '+-/*=.%';
+
+        // document.onkeydown = function (abc) {
+
+        //     if (isNaN(abc.key)) {
+
+        //         if (allowedOperators.indexOf(abc.key) == -1)
+        //             return;
+        //     }
+
+        //     if (abc.key == '=') {
+        //         calucationDone = true;
+        //         nResult();
+        //     } else {
+
+        //         if (calucationDone){
+        //             document.Form.textview.value = '';
+        //         calucationDone = false
+        //     }
+
+        //     document.Form.textview.value += abc.key;
+        // }
+
+        // }
+
+        // function val(num) {
+        //     document.Form.textview.value = document.Form.textview.value + num;
+        // }
+        // function nResult() {
+        //     let num = document.Form.textview.value;
+        //     if (num) {
+        //         document.Form.textview.value = eval(num);
+        //     }
+        // }
+        // function clean() {
+        //     document.Form.textview.value = '';
+        // }
+        // function back() {
+        //     let num = document.Form.textview.value;
+        //     document.Form.textview.value = num.substring(0, num.length - 1);
+        // }
+
+
+
+    </script>
+</body>
+
+</html>

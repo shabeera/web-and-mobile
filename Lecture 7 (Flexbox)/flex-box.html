@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       
+        #abc{
+            display:grid;
+            grid-template-columns: 200px 50px 80px 400px;
+            grid-template-rows:100px 300px 200px 100px;
+            height: 300px;
+        }
+
+        #target{
+           
+        }
+
+        .box{
+            border:1px solid red;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div id="abc">
+        
+        <div class="box"> <h1>A</h1></div>
+        <div class="box"><h1>B</h1></div>
+        <div id="target" class="box"><h1>C</h1></div>
+        <div class="box"><h1>D</h1></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box">new tag</div>
+
+    </div>
+
+</body>
+
+</html>

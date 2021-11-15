@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <script src="application.js"></script> -->
+
+
+    <style>
+
+        table{
+            width:50vw;
+            text-align: center;
+        }
+    
+
+    label{
+        font-weight: bold;
+        font-size: 1.2em;
+    }
+    </style>
+
+</head>
+
+<body>
+
+
+    <table border="1">
+
+
+        <thead>
+
+            <tr>
+                <th>Dish Name</th>
+                <th>Order</th>
+                <th>Price</th>
+                <th>Qty</th>
+            </tr>
+        </thead>
+
+
+        <tbody>
+
+            <tr>
+                <td class="dishName">Biryani</td>
+                <td><input class="dish" type="checkbox"></td>
+                <td>220</td>
+                <td><input value="1" type="number"></td>
+            </tr>
+
+            <tr>
+                <td class="dishName">Chicken Tikka</td>
+                <td><input class="dish" type="checkbox"></td>
+                <td>420</td>
+                <td><input value="1" type="number"></td>
+            </tr>
+
+            <tr>
+                <td class="dishName">Shwarma</td>
+                <td><input class="dish" type="checkbox"></td>
+                <td>100</td>
+                <td><input value="1" type="number"></td>
+            </tr>
+
+            <tr>
+                <td class="dishName">Haleem</td>
+                <td><input class="dish" type="checkbox"></td>
+                <td>70</td>
+                <td><input value="1" type="number"></td>
+            </tr>
+
+            <tr>
+                <td class="dishName">Aloo PAratha</td>
+                <td><input class="dish" type="checkbox"></td>
+                <td>40</td>
+                <td><input value="1" type="number"></td>
+            </tr>
+
+            <tr>
+                <td class="dishName">Daal Maash</td>
+                <td><input class="dish" type="checkbox"></td>
+                <td>50</td>
+                <td><input value="1" type="number"></td>
+            </tr>
+
+            <tr>
+                <td class="dishName">Lassi</td>
+                <td><input class="dish" type="checkbox"></td>
+                <td>30</td>
+                <td><input value="1" type="number"></td>
+            </tr>
+
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td>
+                    <button onclick="calculateBills()">Calculate Bill</button>
+                    <button onclick="showExpensiveBills()">Show Expensive Dishes</button>
+                </td>
+            </tr>
+        </tfoot>
+
+    </table>
+
+    <div id="expensiveDishesC">
+
+    </div>
+
+    <div id="billContainer">
+
+        <div>
+            <label for="">Gross Bill</label> <span id="grossBill"></span>
+        </div>
+
+        <div>
+            <label for="">Discount</label> <span id="Discount"></span>
+        </div>
+        <div>
+            <label for="">Final Bill</label> <span id="finalBill"></span>
+        </div>
+
+    </div>
+
+</body>
+
+<script>
+
+    let totalBills = 0;
+
+    let orderedDishes = [];
+
+    let savedDishes = localStorage.getItem('savedDishes');
+
+    class Person {
+
+        constructor(c, d) {
+
+
+            this.name = c;
+            this.city = d;
+
+            // this.study
+        }
+
+        eat() {
+
+
+        }
+
+        play() {
+
+            console.log("I am playing");
+        }
+    }
+
+
+    function sayHi(){
+        console.log('Say hi!')
+    }
+
+    function showExpensiveBills() {
+
+        expensiveDishesC.innerHTML = '';
+
+        let expensiveDishes = orderedDishes.filter(function (dish) {
+
+            if ((dish.dishQty * dish.dishPrice) >= 300) {
+                return true;
+            }
+
+        });
+
+        expensiveDishes.forEach(function (dish) {
+
+            let newDish = document.createElement('section');
+            newDish.innerHTML = '<div onclick="sayHi()" id="n1" class="abc">' + dish.dishName + ' ' + (dish.dishQty * dish.dishPrice) + '</div>'
+
+            expensiveDishesC.appendChild(newDish);
+
+        });
+
+
+    }
+
+    class Student extends Person {
+
+        constructor(a, b) {
+            super(a, b);
+
+            this.programs = [];
+
+
+        }
+
+    }
+
+    let s1 = new Student('Ahmed', 'FSD');
+    s1.eat();
+
+
+    // let dish1 = new Dish('Biryabn', 10, 200, 33);
+    // let dish2 = new Dish('Biryabn', 10, 200, 33);
+    // let dish3 = new Dish('Biryabn', 10, 200, 33);
+    // let dish4 = new Dish('Biryabn', 10, 200, 33);
+
+
+    class Plate {
+
+        constructor(name, size, price) {
+            this.name = name;
+            this.size = size;
+            this.price = price;
+        }
+
+    }
+
+    // let p1 = new Plate('white', 10, 250);
+    // p1.name
+
+    // let d1 = new Dish('white', 10, 250);
+    // p1.price = 100;
+
+    class Dish {
+
+        constructor(name, qty, price, bill) {
+
+            this.dishName = name;
+            this.dishQty = qty;
+            this.dishPrice = price;
+            this.dishBill = bill;
+
+        }
+
+    }
+
+    //name = Haleem
+    function findDish(name) {
+
+        let allDishes = document.getElementsByClassName('dishName');
+
+        for (var i = 0; i < allDishes.length; i++) {
+            if (allDishes[i].innerText == name) {
+                return allDishes[i];
+            }
+        }
+
+    }
+
+    if (savedDishes) {
+
+        orderedDishes = JSON.parse(savedDishes);
+
+        orderedDishes.forEach(function (oDish) {
+
+            let tdTag = findDish(oDish.name);
+
+            tdTag.nextElementSibling.querySelector('input').checked = true;
+
+        });
+
+    }
+
+    function saveData() {
+
+        localStorage.setItem('savedDishes', JSON.stringify(orderedDishes));
+
+    }
+
+    function calculateBills() {
+
+        orderedDishes.length = 0;
+
+        let dishes = document.querySelectorAll('.dish');
+
+
+        dishes.forEach(function (dish) {
+
+            if (dish.checked) {
+
+
+                let price = dish.parentNode.nextElementSibling.innerText;
+                let qty = dish.parentNode.nextElementSibling.nextElementSibling.querySelector('input').value;
+                totalBills += price * qty;
+
+                // let orderedDish = {
+                //     name: dish.parentNode.previousElementSibling.innerText,
+                //     price: price,
+                //     qty: qty,
+                //     bill: price * qty
+                // };
+
+                let orderedDish = new Dish(dish.parentNode.previousElementSibling.innerText, price, qty, price * qty);
+
+                orderedDishes.push(orderedDish);
+            }
+
+            // orderedDish
+
+        });
+
+
+        grossBill.innerText = totalBills;
+
+        if (totalBills > 300) {
+            let fBill = totalBills * 0.90;
+
+            Discount.innerText = totalBills - fBill;
+
+            finalBill.innerText = fBill;
+        } else {
+            finalBill.innerText = totalBills;
+        }
+
+
+        saveData();
+    }
+
+
+    let num = 20;
+
+</script>
+
+</html>

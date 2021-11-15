@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+
+    <h1>Some heading is there</h1>
+
+</body>
+
+
+<script>
+
+
+
+    document.body.addEventListener('click', function(){
+
+    });
+
+
+    document.body.onclick = function(){
+
+        
+    }
+
+    // alert('Hello');
+
+    /*
+        ok is a success function
+        fail is an error function
+     */
+
+    var somePromise = new Promise(function (ok, fail) {
+
+
+
+    });
+
+    function addData() {
+        return 20;
+    }
+
+
+    function multiplyAddedData() {
+        return 10;
+    }
+
+    async function downloadMarksheet() {
+
+        $.get('marskeher.txt', function (abc) {
+            console.log(abc);
+
+        });
+        //
+    }
+
+
+    var _newPromise = new Promise(function (ok, notok) {
+
+        setTimeout(() => {
+           
+            ok('I am good');
+
+        }, 10000);
+
+        // $.get('marskeher.txt', function (abc) {
+        //console.log(abc);
+        //});
+
+    });
+
+    _newPromise.then(function (args) {
+
+        console.log('File has been downloaded');
+
+    });
+    _newPromise.catch(function (args) {
+
+        console.log(args);
+
+    })
+
+    // downloadMarksheet();
+
+     async function some() {
+
+         await downloadMarksheet();  
+	 await iAmDone();       
+
+     }
+
+      async function iAmDone(){
+	 console.log('File has been downloaded');
+	}
+
+
+    some();
+
+    // console.log(multiplyAddedData());
+    // console.log(addData());
+
+
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,93 @@
+import React from 'react';
+import { connect } from 'react-redux';
+import { func } from 'prop-types';
+
+function Product(props) {
+
+    return <div>
+        Thsi is child component
+        <h1>{props.productsSection.name} </h1>
+        <ol>
+            {
+                props.usersSection.map((user)=>{
+
+                    return <li>{user.name}</li>
+
+                })
+            }
+        </ol>
+    </div>
+
+}
+
+export default connect(function(store){
+    return store;
+})(Product);
+
+// function connect(a, b) {
+
+//     return function () {
+
+//         return a + b;
+
+//     }
+
+// }
+
+// let fin =  connect(4, 5)()
+
+
+*****************************************
+
+
+import {createStore, combineReducers} from 'redux';
+
+function usersSection(){
+
+    return [{name:"Khurram"}, {name:"rameez"}, {name:"umar"}];
+
+}
+
+function productsSection(){
+
+    return {name:"Khurram"};
+
+}
+
+let allSections = combineReducers({usersSection, productsSection});
+
+
+let myStore = createStore(allSections);
+
+export default myStore;
+
+
+
+
+
+*************************************
+
+
+
+
+import React, { useState, useEffect } from 'react';
+
+import { Provider } from 'react-redux'
+import mStore from './store/store';
+
+import Product from './card';
+
+export default function () {
+
+    return <div>
+        <Provider store={mStore}>
+
+
+            <Product />
+
+        </Provider>
+
+    </div>
+
+}
+

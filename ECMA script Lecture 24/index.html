@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+
+    <h1>Some heading is there</h1>
+
+</body>
+
+
+<script>
+
+
+    // alert('Hello');
+
+    /*
+        ok is a success function
+        fail is an error function
+     */
+
+    // var somePromise = new Promise(function (ok, fail) {
+
+
+
+    // });
+
+    // function addData() {
+    //     return 20;
+    // }
+
+
+    // function multiplyAddedData() {
+    //     return 10;
+    // }
+
+    // async function downloadMarksheet() {
+
+    //     $.get('marskeher.txt', function (abc) {
+    //         console.log(abc);
+
+    //     });
+    //     //
+    // }
+
+
+    // function getData() {
+    //     return [2, 5, 20, 90];
+    // }
+
+    // getData().slice(2, 4);
+    // getData().push('Gamica');
+
+
+    //condition ? then : else
+    var num = 10;
+
+    // num == 10 ? console.log('yes') : console.log('no');
+
+    function downloadFile() {
+
+        return new Promise((ok, notok) => {
+                });
+
+    }
+
+    function compressFile(file) {
+
+        return new Promise(function (success, fail) {
+            setTimeout(function () {
+                success('File compressed');
+            }, 5000);
+        });
+
+    }
+
+    downloadFile().then(function (file) {
+
+        return compressFile(file);
+
+    }).then(function (finalVideo) {
+
+        console.log(finalVideo);
+
+
+    }).catch((args) => {
+
+        console.log(args);
+    });
+
+    var _newPromise = new Promise(function (ok, notok) {
+
+        var result = Math.floor(Math.random() * 2);
+
+        setTimeout(() => {
+
+
+            //            downloadFile().
+
+            // if (result) {
+            //     ok('I am more good');
+            // } else {
+
+            //     notok('I am not okay (error)');
+            // }
+
+
+        }, 5);
+    });
+
+    // _newPromise.then(function (video) {
+
+    //     console.log(args);
+
+    // }).catch(function (args) {
+
+    //     console.log(args);
+
+    // })
+
+    // downloadMarksheet();
+
+    // async function some() {
+
+    //     await downloadMarksheet();
+    //     console.log('File has been downloaded');
+
+    // }
+
+
+    //some();
+
+    // console.log(multiplyAddedData());
+    // console.log(addData());
+
+
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <select name="" id="colorSelector">
+
+    <option value="Select Color">Select Color</option>
+    <option value="Red">Red</option>
+    <option value="Green">Green</option>
+    <option value="Brown">Brown</option>
+
+  </select>
+
+  <select name="" id="shapeSelector">
+    <option value="Select Shape">Select Shape</option>
+    <option value="Rectangle">Rectangle</option>
+    <option value="Circle">Circle</option>
+    <option value="Triangle">Triangle</option>
+  </select>
+
+  <button onclick="drawShape()">Create SHape</button>
+
+  <div id="shapeContainer">
+
+  </div>
+
+  <script>
+
+    function drawShape() {
+
+
+      if (colorSelector.selectedIndex == 0 || shapeSelector.selectedIndex == 0) {
+        return alert("Please select your color/shape")
+      }
+
+      let shape = document.createElement('div');
+
+      switch (shapeSelector.value) {
+
+        case 'Rectangle':
+          shape.setAttribute('style', 'width:100px;height:100px;background-color:' + colorSelector.value);
+          shapeContainer.appendChild(shape);
+          break;
+
+          case 'Circle':
+          shape.setAttribute('style', 'border-radius:100px;width:100px;height:100px;background-color:' + colorSelector.value);
+          shapeContainer.appendChild(shape);
+          break;
+
+          case 'Triangle':
+          shape.setAttribute('style', 'width:0;height:0;border-left:20px solid transparent;;border-right:20px solid transparent;;border-bottom:100px solid '+colorSelector.value);
+          shapeContainer.appendChild(shape);
+          break;
+
+      }
+
+
+
+    }
+
+
+  </script>
+
+</body>
+
+</html>

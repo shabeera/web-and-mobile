@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button onclick="sayHello()">Click me</button>
+
+    <h1 id="some"></h1>
+
+    <script>
+
+        let marks = 74;
+        let grade;
+
+        if (marks >= 50 && marks < 60) {
+
+            grade = "C";
+            console.log("pass hogya va");
+
+        } else if (marks >= 60 && marks < 70) {
+
+            grade = "B";
+        } else if (marks >= 70 && marks < 80) {
+
+            grade = "A";
+        } else if (marks >= 80) {
+
+            grade = "A+";
+
+        }
+        else {
+
+            console.log("afsos");
+
+        }
+
+        console.log("aapka grade "+grade)
+
+
+    </script>
+
+</body>
+
+</html>

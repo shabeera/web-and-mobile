@@ -1,0 +1,100 @@
+<style>
+    #parent1 {
+        width: 500px;
+        height: 500px;
+        border: 1px solid red;
+    }
+
+    #child {
+        width: 50px;
+        height: 50px;
+        border: 1px solid blue;
+    }
+</style>
+
+<body id="testBody">
+
+
+    <!-- <div id="parent1">
+        <div id="child">
+        </div>
+    </div> -->
+
+    <!-- <input oninput="addLetter(event)" type="text"> -->
+    <!-- action, delivery path -->
+    <!-- <form action="" onsubmit="saveUser(event)">
+        <input type="text">
+        <button>Submit form</button>
+
+    </form> -->
+
+    <table border="1">
+        <tr>
+            <td>
+                Biryani
+            </td>
+            <td>
+                150
+            </td>
+            <td>
+                <button onclick="orderKardo(event)">Order kardo</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Shwarma
+            </td>
+            <td>
+                90
+            </td>
+            <td>
+                <button onclick="orderKardo(event)">Order kardo</button>
+            </td>
+        </tr>
+    </table>
+
+
+    <script>
+
+        function orderKardo(evt){
+
+            console.log(evt.target.parentNode.previousElementSibling.previousElementSibling.innerText + 's price is '+evt.target.parentNode.previousElementSibling.innerText);
+
+        }
+
+        // parent1.onclick = (evt) => {
+        //     console.log('parent chaling')            
+        // }
+
+        // child.onclick = (evt) => {            
+        //     console.log('child chaling')
+        // }
+
+        // function saveUser(evt){
+        //     evt.preventDefault();
+        //     console.log(evt);
+        // }
+
+        // let fruits = {
+        //     a:'apple',
+        //     b:'banana',
+        //     c:'carrot',
+        //     d:'dates'
+        // }
+
+        // function addLetter(evt){
+
+        //     if(fruits[evt.data]){
+
+        //         console.log(fruits[evt.data])
+        //     }else{
+        //         console.log('fruit nae h')
+        //     }
+
+
+        // }
+
+
+    </script>
+
+</body>

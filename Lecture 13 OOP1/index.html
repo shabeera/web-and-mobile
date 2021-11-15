@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        @keyframes myAnimation {
+
+            from {
+
+                background-color: black;
+            }
+
+            to {
+                background-color: magenta;
+            }
+
+            /* 0% {
+                background-color: black;
+            }
+
+            40% {
+                background-color: magenta;
+            }
+
+            60% {
+                background-color: red;
+            }
+
+            100%{
+                background-color: green;
+            } */
+
+        }
+
+        #someID {
+            width: 600px;
+            height: 600px;
+            background-color: orange;
+
+            animation-name: myAnimation;
+            animation-duration: 20s;
+            animation-timing-function: linear;
+
+
+            /* transition: background-color 3s linear 0s; */
+            /* transition: width 3s linear 0s, background-color 3s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s;
+            ; */
+        }
+
+        #someID:hover {
+            /* background-color:green;
+            width:100px; */
+            /* margin-left: 500px; */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="someID"></div>
+
+</body>
+
+</html>

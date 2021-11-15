@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+
+</head>
+
+<body>
+
+    <audio id="myAudio" src="music.mp3" controls></audio>
+
+    <!-- <img id="myImage" src="green-forest-fog-309122.jpg" /> -->
+
+    <button class="abc" id="some">Click on me</button>
+
+    <input id="ranger" oninput="doWork()" type="range" min="1" max="10" value="10" /> -->
+
+
+    <table border="1">
+
+        <tr>
+            <td>Biryani</td>
+            <td><input class="dish" type="checkbox" /></td>
+            <td>190</td>
+            <td>
+                <input type="number" value="1" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>Samosay</td>
+            <td><input class="dish" type="checkbox" /></td>
+            <td class="price">25</td>
+            <td>
+                <input type="number" value="1" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>Shwarma</td>
+            <td><input class="dish" type="checkbox" /></td>
+
+            <td>80</td>
+            <td>
+                <input type="number" value="1" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>Chicken Karahi</td>
+            <td><input class="dish" type="checkbox" /></td>
+
+            <td>250</td>
+            <td>
+                <input type="number" value="1" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>Broast</td>
+            <td><input id="test" class="dish" type="checkbox" /></td>
+
+            <td>350</td>
+            <td>
+                <input type="number" value="1" />
+            </td>
+        </tr>
+
+        <tfoot>
+
+            <tr>
+                <td>
+                    <button onclick="calcualteBill()">Calculate</button>
+                </td>
+            </tr>
+
+        </tfoot>
+
+    </table>
+
+
+    <div>
+
+        <div>
+            <label>Gross Bill </label> <span id="grossBill"></span>
+        </div>
+        <div>
+            <label>Discount </label> <span id="discountBill"></span>
+        </div>
+        <div>
+            <label>Total Bill </label> <span id="totalBills"></span>
+        </div>
+    </div>
+
+</body>
+
+<script>
+
+
+    let data = [1, 2, 3, 4, 5];
+
+
+    let num2 = data.map(function (item) {
+
+        return item * item;
+
+    });
+
+
+
+
+
+
+
+
+
+    function calcualteBill(a) {
+
+        let dishes = document.querySelectorAll('.dish');
+
+        let totalBill = 0;
+
+        dishes.forEach(function (dish) {
+
+            if (dish.checked) {
+
+                let price = +dish.parentNode.nextElementSibling.innerText;
+                let qty = +dish.parentNode.nextElementSibling.nextElementSibling.querySelector('input').value;
+                totalBill += price * qty;
+            }
+
+        });
+
+        grossBill.innerText = totalBill;
+        let discount = 0;
+
+        if (totalBill > 400) {
+            discount = totalBill * 0.10;
+        }
+        
+        discountBill.innerText = discount;
+        totalBills.innerText = totalBill - discount;
+
+        // console.log(totalBill);
+
+    }
+
+    // function doWork() {
+
+    //     myImage.style.opacity = ranger.value / 10;
+    // }
+    // document.getElementById('ranger');
+
+    // document.querySelector('#ranger');
+    // document.querySelector('.abc');
+    // document.querySelector('span');
+
+    // document.querySelector('div[name]');
+
+
+    // document.getElementsByClassName('abc');
+    // document.getElementsByName();
+    // document.getElementsByTagName('span');
+    // document.querySelectorAll();
+
+    // function doWork(abc) {
+
+    //     myAudio.volume = abc.value / 10;
+
+    // }
+
+
+</script>
+
+</html>

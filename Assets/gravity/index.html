@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        @keyframes rotateL {
+
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+        .rotatingL {
+            animation: rotateL 1s linear 0s;
+            animation-iteration-count: infinite;
+        }
+
+        #footBall {
+            width: 100px;
+            position: absolute;
+            /* top: 50vh; */
+            /* left: 50%; */
+            margin: auto;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <button onclick="moveLeft()">LEFT</button>
+    <button onclick="moveCenter()">CENTER</button>
+    <button onclick="moveRight()">RIGHT</button>
+
+    <button onclick="moveTopLeft()">Top Lef</button>
+
+    <img id="footBall" src="football.png" />
+
+    <script>
+
+        footBall.style.left = ((innerWidth / 2) - 50) + "px";
+        footBall.style.top = ((innerHeight / 2) - 50) + "px";
+
+        function moveTopLeft() {
+
+            let key = setInterval(() => {
+
+                let cLeft = footBall.offsetLeft;
+                let cTop = footBall.offsetTop;
+
+                if (cLeft > 0) {
+                    footBall.style.left = (cLeft - 1) + 'px';
+                }
+
+                if (cTop > 0) {
+                    footBall.style.top = (cTop - 1) + 'px';
+                }
+
+
+
+            }, 0)
+
+        }
+
+        function moveLeft() {
+
+            let targetPosition = 0;
+
+            let key = setInterval(function () {
+
+                let cLeft = footBall.offsetLeft;
+
+                if (cLeft > 0) {
+                    // let coutner = 0;
+                    // footBall.style.transform = "rotate(" + coutner + "deg)";
+                    footBall.classList.add('rotatingL');
+                    footBall.style.left = (cLeft - 1) + 'px';
+                } else {
+                    clearInterval(key);
+                    footBall.classList.remove('rotatingL');
+                    direction = "RIGHT";
+                }
+
+            }, 0);
+
+        }
+
+        let direction = "";
+
+        function moveCenter() {
+
+            let targetPosition = innerWidth / 2;
+
+            let key = setInterval(function () {
+
+                let cLeft = footBall.offsetLeft;
+
+                if (cLeft != targetPosition) {
+
+                    if (direction == "RIGHT") {
+                        footBall.classList.add('rotatingL');
+                        footBall.style.left = (cLeft + 1) + 'px';
+                    } else {
+                        footBall.classList.add('rotatingL');
+
+                        footBall.style.left = (cLeft - 1) + 'px';
+                    }
+                } else {
+                    footBall.classList.remove('rotatingL');
+
+                    clearInterval(key);
+                }
+
+            }, 0);
+
+        }
+        function moveRight() {
+
+            let targetPosition = innerWidth;
+
+            let key = setInterval(function () {
+
+                let cLeft = footBall.offsetLeft;
+
+                if (cLeft < (targetPosition - 100)) {
+                    footBall.classList.add('rotatingL');
+
+                    footBall.style.left = (cLeft + 1) + 'px';
+                } else {
+                    clearInterval(key);
+                    footBall.classList.remove('rotatingL');
+
+                    direction = "LEFT";
+                }
+
+            }, 0);
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

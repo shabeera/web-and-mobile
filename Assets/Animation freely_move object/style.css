@@ -1,0 +1,15 @@
+.baloon{
+    width:60px;
+    position: relative;
+}
+
+
+#appContainer{
+
+    width:40vw;
+    height:70vh;
+    border: 1px solid black;
+    position: absolute;
+    margin-left: 30vw;
+    /* border-right: none; */
+}
